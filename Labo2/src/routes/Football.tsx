@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import Counter from "~/components/Counter";
-import List from "~/components/List";
+import List from "~/components/NumberOfPlayers";
 
 export default function Football() {
   return (

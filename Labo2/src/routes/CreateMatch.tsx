@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 //import Counter from "~/components/Counter";
-import List from "~/components/List";
+import NumberOfPlayers from "~/components/NumberOfPlayers";
 import Calendar from "~/components/Calendar";
 import Place from "~/components/Place"
 import Levels from "~/components/Levels"
@@ -16,7 +16,7 @@ export default function createMatch() {
       <h2>Level</h2>
       <Levels />
       <h2>Number of Players ?</h2>
-      <List />
+      <NumberOfPlayers />
 
 
       <p class="my-4">
