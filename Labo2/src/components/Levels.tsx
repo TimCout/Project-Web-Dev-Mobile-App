@@ -1,6 +1,11 @@
 import { createSignal } from "solid-js";
+import { StringValidation } from "zod";
 
-export default function Levels() {
+type LevelsProps = {
+  name: string
+}
+
+export default function Levels(props: LevelsProps) {
   const [selectedLevel, setSelectedLevel] = createSignal('');
 
   const levels = ["Chill", "Fun", "TryHard"];
@@ -19,6 +24,8 @@ export default function Levels() {
           </button>
         </li>
       ))}
+      <input name={props.name} value={selectedLevel()} type="hidden" />
     </ul>
   );
 }
+

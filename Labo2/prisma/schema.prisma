@@ -16,7 +16,16 @@ model User {
   name  String?
 }
 
-model Places {
-  id String @id @default(autoincrement())
-  adress String
+model Matches {
+  id Int @id @default(autoincrement())
+  date DateTime
+  place String
+  level String
+  registeredPlayer Int
+  neededPlayer Int
 }
+
+// model Places {
+//   id String @id @default(autoincrement())
+//   adress String
+// }
