@@ -19,7 +19,7 @@ export default function createMatch() {
         <h2 class="text-sky-300">Where ?</h2>
         <Places name="place" />
         <h2 class="text-sky-300">Level</h2>
-        <Levels name="levels"/>
+        <Levels name="level"/>
         <h2 class="text-sky-300">Number of Players ?</h2>
         <NumberOfPlayers countName="registeredPlayer" totalName="neededPlayer" />
 

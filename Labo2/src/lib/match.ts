@@ -4,15 +4,15 @@ import {z} from 'zod'
 
 export const getMatches = query(async () => {
   'use server'
-  return db.task.findMany()
+  return db.matches.findMany()
 }, 'getMatches')
 
 const schema = z.object({
     date: z.date(),
     place: z.string(),
     level: z.string(),
-    playerRegistered: z.number(),
-    playerNeeded: z.number(),
+    playerRegistered: z.coerce.number(),
+    playerNeeded: z.coerce.number(),
 })
 
 export const addMatch = async (formData: FormData)=>{
