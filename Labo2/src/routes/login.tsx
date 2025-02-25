@@ -99,7 +99,7 @@ export default function Login() {
               disabled={loading()}
               class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading() ? "Connexion..." : "Sign in"}
+              {loading() ? "Connexion..." : "Log in"}
             </button>
           </div>
           

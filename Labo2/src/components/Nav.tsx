@@ -8,7 +8,7 @@ export default function Nav() {
       <ul class="container flex items-center p-3 text-gray-200">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/about">About</NavLink>
-        <NavLink href="/connexion">Connexion</NavLink>
+        <NavLink href="/login">Connexion</NavLink>
         <NavLink href="/football">Football</NavLink>
         <NavLink href="/createMatch">Create a match</NavLink>
       </ul>
