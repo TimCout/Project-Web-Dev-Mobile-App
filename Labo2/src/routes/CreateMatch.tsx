@@ -1,8 +1,6 @@
 import { A } from "@solidjs/router";
-//import Counter from "~/components/Counter";
 import NumberOfPlayers from "~/components/NumberOfPlayers";
 import Calendar from "~/components/Calendar";
-//import Place from "~/components/Place";
 import Levels from "~/components/Levels";
 import { addMatchAction } from "~/lib/match";
 import { input } from "vinxi/dist/types/lib/plugins/config";
