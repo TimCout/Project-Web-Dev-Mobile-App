@@ -11,8 +11,8 @@ const schema = z.object({
     date: z.date(),
     place: z.string(),
     level: z.string(),
-    playerRegistered: z.coerce.number(),
-    playerNeeded: z.coerce.number(),
+    registeredPlayer: z.coerce.number(),
+    neededPlayer: z.coerce.number(),
 })
 
 export const addMatch = async (formData: FormData)=>{
@@ -21,8 +21,8 @@ export const addMatch = async (formData: FormData)=>{
     date: new Date(formData.get('date') as string),
     place: formData.get('place'),
     level: formData.get('level'),
-    playerRegistered: formData.get('registeredPlayer'),
-    playerNeeded: formData.get('neededPlayer'),
+    registeredPlayer: formData.get('registeredPlayer'),
+    neededPlayer: formData.get('neededPlayer'),
   })
   await db.matches.create({ data })
 }

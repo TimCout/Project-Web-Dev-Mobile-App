@@ -1,31 +1,17 @@
-import { A, createAsync } from "@solidjs/router";
+import { A, createAsyncStore } from "@solidjs/router";
+import { For } from "solid-js";
 import Counter from "~/components/Counter";
 import List from "~/components/NumberOfPlayers";
 import { getMatches } from "~/lib/match";
 
 export default function Football() {
-  const matches = createAsync(() => getMatches())
+  const matches = createAsyncStore(() => getMatches())
   return (
     <main class="text-center mx-auto text-gray-700 p-4">
-      <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">Football Page</h1>
-      <List />
-      <p class="mt-8">
-        Visit{" "}
-        <a href="https://solidjs.com" target="_blank" class="text-sky-600 hover:underline">
-          solidjs.com
-        </a>{" "}
-        to learn how to build Solid apps.
-      </p>
-      <p class="my-4">
-        <A href="/" class="text-sky-600 hover:underline">
-          Home
-        </A>
-        {" - "}
-        <span>About Page</span>
-      </p>
-      <pre>
-        {JSON.stringify(matches(), null, 2)}
-      </pre>
+      <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">THEY WANT YOU</h1>
+      <For each={matches()}>
+        {match => <li class="text-sky-300">{match.registeredPlayer} players over {match.neededPlayer} - {match.place} - {match.level} </li>}
+      </For>
     </main>
   );
 }
