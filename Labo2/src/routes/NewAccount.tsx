@@ -1,5 +1,6 @@
 import { createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
+import { addUserAction } from "~/lib/user";
 
 export default function NewAccount() {
   const [username, setUsername] = createSignal("");
@@ -11,66 +12,66 @@ export default function NewAccount() {
   
   const navigate = useNavigate();
   
-  const handleCreateAccount = async (e) => {
-    e.preventDefault();
-    setError("");
+  // const handleCreateAccount = async (e) => {
+  //   e.preventDefault();
+  //   setError("");
     
-    // Validation basique
-    if (!username() || !email() || !password() || !confirmPassword()) {
-      setError("Veuillez remplir tous les champs");
-      return;
-    }
+  //   // Validation basique
+  //   if (!username() || !email() || !password() || !confirmPassword()) {
+  //     setError("Veuillez remplir tous les champs");
+  //     return;
+  //   }
     
-    if (password() !== confirmPassword()) {
-      setError("Les mots de passe ne correspondent pas");
-      return;
-    }
+  //   if (password() !== confirmPassword()) {
+  //     setError("Les mots de passe ne correspondent pas");
+  //     return;
+  //   }
     
-    if (password().length < 8) {
-      setError("Le mot de passe doit contenir au moins 8 caractères");
-      return;
-    }
+  //   if (password().length < 8) {
+  //     setError("Le mot de passe doit contenir au moins 8 caractères");
+  //     return;
+  //   }
     
-    setLoading(true);
+  //   setLoading(true);
     
-    try {
-      // Appel API pour créer un compte
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username(),
-          email: email(),
-          password: password(),
-        }),
-      });
+  //   try {
+  //     // Appel API pour créer un compte
+  //     const response = await fetch("/api/register", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         username: username(),
+  //         email: email(),
+  //         password: password(),
+  //       }),
+  //     });
       
-      const data = await response.json();
+  //     const data = await response.json();
       
-      if (!response.ok) {
-        throw new Error(data.message || "Erreur lors de la création du compte");
-      }
+  //     if (!response.ok) {
+  //       throw new Error(data.message || "Erreur lors de la création du compte");
+  //     }
       
-      // Optionnel : connexion automatique après création de compte
-      localStorage.setItem("authToken", data.token);
+  //     // Optionnel : connexion automatique après création de compte
+  //     localStorage.setItem("authToken", data.token);
       
-      // Redirection vers la page principale ou une page de confirmation
-      navigate("/account-created");
-    } catch (err) {
-      setError(err.message || "Une erreur est survenue lors de la création du compte");
-    } finally {
-      setLoading(false);
-    }
-  };
+  //     // Redirection vers la page principale ou une page de confirmation
+  //     navigate("/account-created");
+  //   } catch (err) {
+  //     setError(err.message || "Une erreur est survenue lors de la création du compte");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   
   return (
     <main class="text-center mx-auto text-gray-700 p-4">
       <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">Create an account</h1>
       
       <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-        <form onSubmit={handleCreateAccount} class="space-y-6">
+        <form method="post" action={addUserAction}>
           {error() && (
             <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
               <p>{error()}</p>
@@ -82,7 +83,7 @@ export default function NewAccount() {
               Username
             </label>
             <input
-              id="username"
+              name="username"
               type="text"
               value={username()}
               onInput={(e) => setUsername(e.target.value)}
@@ -97,7 +98,7 @@ export default function NewAccount() {
               Password
             </label>
             <input
-              id="password"
+              name="password"
               type="password"
               value={password()}
               onInput={(e) => setPassword(e.target.value)}
@@ -113,7 +114,7 @@ export default function NewAccount() {
               Confirm password
             </label>
             <input
-              id="confirmPassword"
+              name="confirmPassword"
               type="password"
               value={confirmPassword()}
               onInput={(e) => setConfirmPassword(e.target.value)}

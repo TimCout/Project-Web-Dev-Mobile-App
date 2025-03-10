@@ -68,7 +68,7 @@ export default function Login() {
               Username
             </label>
             <input
-              id="username"
+              name="username"
               type="text"
               value={username()}
               onInput={(e) => setUsername(e.target.value)}
@@ -83,7 +83,7 @@ export default function Login() {
               Password
             </label>
             <input
-              id="password"
+              name="password"
               type="password"
               value={password()}
               onInput={(e) => setPassword(e.target.value)}
