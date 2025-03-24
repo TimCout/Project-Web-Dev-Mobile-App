@@ -1,6 +1,6 @@
 import { createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
-import { loginAction } from "~/lib/user";
+import { logoutAction } from "~/lib/user";
 import Layout from "~/components/Layout";
 
 export default function Login() {
@@ -11,57 +11,57 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   setError("");
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+//     setError("");
 
-  //   if (!username() || !password()) {
-  //     setError("Please fill all the entry in");
-  //     return;
-  //   }
+//     if (!username() || !password()) {
+//       setError("Please fill all the entry in");
+//       return;
+//     }
 
-  //   setLoading(true);
+//     setLoading(true);
 
-  //   try {
-  //     // Remplacez cette partie par votre logique d'authentification avec Prisma
-  //     const response = await fetch("/api/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         username: username(),
-  //         password: password(),
-  //       }),
-  //     });
+//     try {
+//       // Remplacez cette partie par votre logique d'authentification avec Prisma
+//       const response = await fetch("/api/login", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           username: username(),
+//           password: password(),
+//         }),
+//       });
 
-  //     const data = await response.json();
+//       const data = await response.json();
 
-  //     if (!response.ok) {
-  //       throw new Error(data.message || "Erreur de connexion");
-  //     }
+//       if (!response.ok) {
+//         throw new Error(data.message || "Erreur de connexion");
+//       }
 
-  //     // Stockage du token ou des informations de session
-  //     localStorage.setItem("authToken", data.token);
+//       // Stockage du token ou des informations de session
+//       localStorage.setItem("authToken", data.token);
 
-  //     // Redirection vers la page principale
-  //     navigate("/football");
-  //   } catch (err) {
-  //     setError(err.message || "Une erreur est survenue lors de la connexion");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+//       // Redirection vers la page principale
+//       navigate("/login");
+//     } catch (err) {
+//       setError(err.message || "Une erreur est survenue lors de la connexion");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
 
   return (
     <Layout>
       <main class="text-center mx-auto text-gray-700 p-4">
         <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">
-          Connexion
+          Are you sure to logout ?
         </h1>
 
         <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-          <form method="post" action={loginAction} class="space-y-6">
+          <form method="post" action={logoutAction} /*onSubmit={handleLogin}*/ class="space-y-6">
             {error() && (
               <div
                 class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4"
@@ -71,7 +71,7 @@ export default function Login() {
               </div>
             )}
 
-            <div class="text-left">
+            {/* <div class="text-left">
               <label for="username" class="block text-sky-700 font-medium mb-2">
                 Username
               </label>
@@ -99,7 +99,7 @@ export default function Login() {
                 placeholder="Enter your password"
                 required
               />
-            </div>
+            </div> */}
 
             <div>
               <button
@@ -107,18 +107,18 @@ export default function Login() {
                 disabled={loading()}
                 class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {loading() ? "Connexion..." : "Log in"}
+                {loading() ? "Deconnexion..." : "Log out"}
               </button>
             </div>
 
-            <div class="text-sm text-gray-600 mt-4">
+            {/* <div class="text-sm text-gray-600 mt-4">
               <p>
                 Not a member yet ?{" "}
                 <a href="/NewAccount" class="text-sky-600 hover:underline">
                   Create an account
                 </a>
               </p>
-            </div>
+            </div> */}
           </form>
         </div>
       </main>

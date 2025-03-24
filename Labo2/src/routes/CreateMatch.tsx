@@ -4,40 +4,43 @@ import Calendar from "~/components/Calendar";
 import Levels from "~/components/Levels";
 import { addMatchAction } from "~/lib/match";
 import { input } from "vinxi/dist/types/lib/plugins/config";
+import Layout from "~/components/Layout";
 
 export default function createMatch() {
   return (
-    <main class="text-center mx-auto text-gray-700 p-4">
-      <form method="post" action={addMatchAction}>
-        <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">
-          Create your match
-        </h1>
-        <h2 class="text-sky-300">When ?</h2>
-        <Calendar name="date" />
-        <h2 class="text-sky-300">Where ?</h2>
-        <Places name="place" />
-        <h2 class="text-sky-300">Level</h2>
-        <Levels name="level"/>
-        <h2 class="text-sky-300">Number of Players ?</h2>
-        <NumberOfPlayers countName="registeredPlayer" totalName="neededPlayer" />
+    <Layout protected>
+      <main class="text-center mx-auto text-gray-700 p-4">
+        <form method="post" action={addMatchAction}>
+          <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">
+            Create your match
+          </h1>
+          <h2 class="text-sky-300">When ?</h2>
+          <Calendar name="date" />
+          <h2 class="text-sky-300">Where ?</h2>
+          <Places name="place" />
+          <h2 class="text-sky-300">Level</h2>
+          <Levels name="level"/>
+          <h2 class="text-sky-300">Number of Players ?</h2>
+          <NumberOfPlayers countName="registeredPlayer" totalName="neededPlayer" />
 
-        {/* Bouton Create Match */}
-        <button
-          type="submit"
-          class="mt-8 px-6 py-3 bg-sky-500 text-white text-lg font-semibold rounded-lg border-2 border-sky-600 shadow-md hover:bg-sky-600 transition-all duration-300"
-        >
-          Create Match
-        </button>
-      </form>
+          {/* Bouton Create Match */}
+          <button
+            type="submit"
+            class="mt-8 px-6 py-3 bg-sky-500 text-white text-lg font-semibold rounded-lg border-2 border-sky-600 shadow-md hover:bg-sky-600 transition-all duration-300"
+          >
+            Create Match
+          </button>
+        </form>
 
-      <p class="my-4">
-        <A href="/" class="text-sky-600 hover:underline">
-          Home
-        </A>
-        {" - "}
-        <span>About Page</span>
-      </p>
-    </main>
+        <p class="my-4">
+          <A href="/" class="text-sky-600 hover:underline">
+            Home
+          </A>
+          {" - "}
+          <span>About Page</span>
+        </p>
+      </main>
+    </Layout>
   );
 }
 

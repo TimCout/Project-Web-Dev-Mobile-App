@@ -5,12 +5,18 @@ export default function Nav() {
   
   return (
     <nav class="bg-sky-800">
-      <ul class="container flex items-center p-3 text-gray-200">
-        <NavLink href="/">Home</NavLink>
-        <NavLink href="/about">About</NavLink>
-        <NavLink href="/login">Connexion</NavLink>
-        <NavLink href="/football">Football</NavLink>
-        <NavLink href="/createMatch">Create a match</NavLink>
+      <ul class="container flex justify-between items-center p-3 text-gray-200">
+        <div class="flex flex-row">
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/about">About</NavLink>
+          <NavLink href="/login">Connexion</NavLink>
+          <NavLink href="/football">Football</NavLink>
+          <NavLink href="/createMatch">Create a match</NavLink>
+        </div>
+
+        <div>
+          <NavLink href="/logout">Log out</NavLink>
+        </div>
       </ul>
     </nav>
   );
