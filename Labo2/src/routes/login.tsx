@@ -11,48 +11,6 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-  //   setError("");
-
-  //   if (!username() || !password()) {
-  //     setError("Please fill all the entry in");
-  //     return;
-  //   }
-
-  //   setLoading(true);
-
-  //   try {
-  //     // Remplacez cette partie par votre logique d'authentification avec Prisma
-  //     const response = await fetch("/api/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         username: username(),
-  //         password: password(),
-  //       }),
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (!response.ok) {
-  //       throw new Error(data.message || "Erreur de connexion");
-  //     }
-
-  //     // Stockage du token ou des informations de session
-  //     localStorage.setItem("authToken", data.token);
-
-  //     // Redirection vers la page principale
-  //     navigate("/football");
-  //   } catch (err) {
-  //     setError(err.message || "Une erreur est survenue lors de la connexion");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     <Layout>
       <main class="text-center mx-auto text-gray-700 p-4">

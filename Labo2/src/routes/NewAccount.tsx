@@ -13,60 +13,6 @@ export default function NewAccount() {
   
   const navigate = useNavigate();
   
-  // const handleCreateAccount = async (e) => {
-  //   e.preventDefault();
-  //   setError("");
-    
-  //   // Validation basique
-  //   if (!username() || !email() || !password() || !confirmPassword()) {
-  //     setError("Veuillez remplir tous les champs");
-  //     return;
-  //   }
-    
-  //   if (password() !== confirmPassword()) {
-  //     setError("Les mots de passe ne correspondent pas");
-  //     return;
-  //   }
-    
-  //   if (password().length < 8) {
-  //     setError("Le mot de passe doit contenir au moins 8 caractères");
-  //     return;
-  //   }
-    
-  //   setLoading(true);
-    
-  //   try {
-  //     // Appel API pour créer un compte
-  //     const response = await fetch("/api/register", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         username: username(),
-  //         email: email(),
-  //         password: password(),
-  //       }),
-  //     });
-      
-  //     const data = await response.json();
-      
-  //     if (!response.ok) {
-  //       throw new Error(data.message || "Erreur lors de la création du compte");
-  //     }
-      
-  //     // Optionnel : connexion automatique après création de compte
-  //     localStorage.setItem("authToken", data.token);
-      
-  //     // Redirection vers la page principale ou une page de confirmation
-  //     navigate("/account-created");
-  //   } catch (err) {
-  //     setError(err.message || "Une erreur est survenue lors de la création du compte");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  
   return (
     <Layout>
       <main class="text-center mx-auto text-gray-700 p-4">

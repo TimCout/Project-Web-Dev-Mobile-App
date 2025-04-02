@@ -57,7 +57,7 @@ export const login = async (form: FormData) => {
   const loggedIn = await bcrypt.compare(password, record.password);
   if (loggedIn) {
     const session = await getSession();
-    session.update({ username });
+    await session.update({ username });
   }
 };
 
