@@ -1,10 +1,16 @@
-import { A, createAsyncStore } from "@solidjs/router";
-import { For } from "solid-js";
+import { A, createAsync, createAsyncStore } from "@solidjs/router";
+import { For, Show } from "solid-js";
 import Counter from "~/components/Counter";
 import List from "~/components/NumberOfPlayers";
-import { getMatches, joinMatchAction } from "~/lib/match";
+import {
+  getMatches,
+  hasJoined,
+  joinMatchAction,
+  leaveMatchAction,
+} from "~/lib/match";
 import moment from "moment";
 import Layout from "~/components/Layout";
+import { Card } from "~/components/Card";
 
 export default function Football() {
   const matches = createAsyncStore(() => getMatches());
@@ -26,28 +32,42 @@ export default function Football() {
 
         <ul class="list-none p-0">
           <For each={availableMatches()}>
-            {(match) => (
-              <li class="flex justify-between items-center p-3 my-2 border rounded-lg bg-white shadow-sm">
-                <div class="text-sky-700 text-left">
-                  <span class="font-bold">
-                    {moment(match.date).format("LLLL")}
-                  </span>{" "}
-                  -<span class="font-bold">{match.place}</span> -
-                  <span class="italic">Niveau : {match.level}</span> -
-                  <span class="text-orange-500">
-                    {match.registeredPlayer}/{match.neededPlayer} players
-                  </span>
-                </div>
-                <form method="post" action={joinMatchAction.with(match.id)}>
-                  <button
-                    type="submit"
-                    class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-2 px-4 rounded transition duration-200"
+            {(match) => {
+              const joined = createAsync(() => hasJoined(match.id));
+              return (
+                <Card component="li">
+                  <div class="text-sky-700 text-left">
+                    <span class="font-bold">
+                      {moment(match.date).format("LLLL")}
+                    </span>{" "}
+                    -<span class="font-bold">{match.place}</span> -
+                    <span class="italic">Niveau : {match.level}</span> -
+                    <span class="text-orange-500">
+                      {match.registeredPlayer}/{match.neededPlayer} players
+                    </span>
+                  </div>
+                  <form
+                    method="post"
+                    action={
+                      joined()
+                        ? leaveMatchAction.with(match.id)
+                        : joinMatchAction.with(match.id)
+                    }
                   >
-                    I'm in!
-                  </button>
-                </form>
-              </li>
-            )}
+                    <button
+                      type="submit"
+                      classList={{
+                        "bg-red-700": joined(),
+                        "bg-sky-500 hover:bg-sky-600": !joined(),
+                      }}
+                      class="text-white font-bold py-2 px-4 rounded transition duration-200"
+                    >
+                      I'm {joined() ? "out" : "in"} !
+                    </button>
+                  </form>
+                </Card>
+              );
+            }}
           </For>
         </ul>
       </main>

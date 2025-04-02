@@ -2,6 +2,7 @@ import { createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { loginAction } from "~/lib/user";
 import Layout from "~/components/Layout";
+import { WhiteBox } from "~/components/WhiteBox";
 
 export default function Login() {
   const [username, setUsername] = createSignal("");
@@ -18,7 +19,7 @@ export default function Login() {
           Connexion
         </h1>
 
-        <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+        <WhiteBox>
           <form method="post" action={loginAction} class="space-y-6">
             {error() && (
               <div
@@ -78,7 +79,7 @@ export default function Login() {
               </p>
             </div>
           </form>
-        </div>
+        </WhiteBox>
       </main>
     </Layout>
   );

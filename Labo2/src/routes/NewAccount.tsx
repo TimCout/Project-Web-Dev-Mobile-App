@@ -2,6 +2,7 @@ import { createSignal } from "solid-js";
 import { useNavigate } from "@solidjs/router";
 import { registerAction } from "~/lib/user";
 import Layout from "~/components/Layout";
+import { WhiteBox } from "~/components/WhiteBox";
 
 export default function NewAccount() {
   const [username, setUsername] = createSignal("");
@@ -18,7 +19,7 @@ export default function NewAccount() {
       <main class="text-center mx-auto text-gray-700 p-4">
         <h1 class="max-6-xs text-6xl text-sky-700 font-thin uppercase my-16">Create an account</h1>
         
-        <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
+        <WhiteBox>
           <form method="post" action={registerAction}>
             {error() && (
               <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
@@ -91,7 +92,7 @@ export default function NewAccount() {
               </p>
             </div>
           </form>
-        </div>
+        </WhiteBox>
       </main>
     </Layout>
   );
