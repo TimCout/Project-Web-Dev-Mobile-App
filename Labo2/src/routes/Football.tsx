@@ -41,7 +41,7 @@ export default function Football() {
                       {moment(match.date).format("LLLL")}
                     </span>{" "}
                     -<span class="font-bold">{match.place}</span> -
-                    <span class="italic">Niveau : {match.level}</span> -
+                    <span class="italic">Level : {match.level}</span> -
                     <span class="text-orange-500">
                       {match.registeredPlayer}/{match.neededPlayer} players
                     </span>

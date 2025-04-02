@@ -1,16 +1,12 @@
 import { createSignal } from "solid-js";
-import { useNavigate } from "@solidjs/router";
+import { useNavigate, useSubmission } from "@solidjs/router";
 import { logoutAction } from "~/lib/user";
 import Layout from "~/components/Layout";
 import { WhiteBox } from "~/components/WhiteBox";
+import { BlueButton } from "~/components/BlueButton";
 
 export default function Login() {
-  const [username, setUsername] = createSignal("");
-  const [password, setPassword] = createSignal("");
-  const [error, setError] = createSignal("");
-  const [loading, setLoading] = createSignal(false);
-
-  const navigate = useNavigate();
+  const submission = useSubmission(logoutAction)
   
   return (
     <Layout>
@@ -21,23 +17,21 @@ export default function Login() {
 
         <WhiteBox>
           <form method="post" action={logoutAction} class="space-y-6">
-            {error() && (
+            {submission.error && (
               <div
                 class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4"
                 role="alert"
               >
-                <p>{error()}</p>
+                <p>{submission.error.message}</p>
               </div>
             )}
 
             <div>
-              <button
-                type="submit"
-                disabled={loading()}
-                class="w-full bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-lg transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              <BlueButton
+                disabled={submission.pending}
               >
-                {loading() ? "Deconnexion..." : "Log out"}
-              </button>
+                {submission.pending ? "Deconnexion..." : "Log out"}
+              </BlueButton>
             </div>
           </form>
         </WhiteBox>
