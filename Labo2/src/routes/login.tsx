@@ -28,14 +28,6 @@ export default function Login() {
 
             <Connexion></Connexion>
 
-            <div class="text-sm text-gray-600 mt-4">
-              <p>
-                Not a member yet ?{" "}
-                <a href="/NewAccount" class="text-sky-600 hover:underline">
-                  Create an account
-                </a>
-              </p>
-            </div>
           </form>
         </WhiteBox>
       </main>

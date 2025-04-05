@@ -34,13 +34,22 @@ export function Connexion(props: { register?: boolean }) {
         </Show>
       </BlueButton>
 
-      <LittleTxt p="Not a member yet ?" href="/NewAccount" txt_link="Create an account"/>
-      <Show when={props.register}>
-        <LittleTxt p="Already have an account?" href="/login" txt_link="Log in"/>
+      <Show
+        when={props.register}
+        fallback={
+          <LittleTxt
+            p="Not a member yet ?"
+            href="/NewAccount"
+            txt_link="Create an account"
+          />
+        }
+      >
+        <LittleTxt
+          p="Already have an account?"
+          href="/login"
+          txt_link="Log in"
+        />
       </Show>
-      
-
-
     </form>
   );
 }

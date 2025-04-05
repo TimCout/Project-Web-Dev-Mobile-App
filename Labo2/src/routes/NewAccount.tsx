@@ -28,14 +28,6 @@ export default function NewAccount() {
 
             <Connexion register></Connexion>
 
-            <div class="text-sm text-gray-600 mt-4">
-              <p>
-                Already have an account?{" "}
-                <a href="/login" class="text-sky-600 hover:underline">
-                  Log in
-                </a>
-              </p>
-            </div>
           </form>
         </WhiteBox>
       </main>
