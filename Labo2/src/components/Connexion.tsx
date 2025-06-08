@@ -8,6 +8,14 @@ export function Connexion(props: { register?: boolean }) {
   const submission = useSubmission(action());
   return (
     <form method="post" action={action()}>
+      {submission.error && (
+        <div
+          class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4"
+          role="alert"
+        >
+          <p>{submission.error.message}</p>
+        </div>
+      )}
       <Field name="username" label="Username" placeholder="Choose a username" />
 
       <Field

@@ -12,6 +12,7 @@ export const getUser = query(async () => {
       return null;
     }
     return await db.users.findUniqueOrThrow({
+      select: { username: true, id: true },
       where: { username: session.data.username },
     });
   } catch {

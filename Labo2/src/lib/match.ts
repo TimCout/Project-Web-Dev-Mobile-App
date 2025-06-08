@@ -41,7 +41,7 @@ export async function joinMatch(matchId: number) {
     await db.matches.update({
       where: { id: matchId },
       data: {
-        registeredPlayer: match.registeredPlayer + 1,
+        registeredPlayer: { increment: 1},
       },
     });
   }
@@ -73,7 +73,7 @@ export async function leaveMatch(matchId: number) {
     await db.matches.update({
       where: { id: matchId },
       data: {
-        registeredPlayer: match.registeredPlayer - 1,
+        registeredPlayer: { decrement: 1},
       },
     });
     if (await hasJoined(matchId)) {

@@ -8,3 +8,4 @@ export async function GET(event: APIEvent) {
 export async function POST(event: APIEvent) {
   return await addMatch(await event.request.formData())
 }
+
